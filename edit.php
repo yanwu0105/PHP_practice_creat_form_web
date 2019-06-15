@@ -7,6 +7,16 @@ $result = $db->query($sql);
 $rows = $result->fetchAll();
 ?>
 
+<?php 
+function hobby_checked($hobby_list,$arrlength,$hobby_info){	
+	for($x=0;$x<$arrlength;$x++) {
+		if ($hobby_list[$x] == $hobby_info) {
+			echo "checked";
+		}
+	}
+} 
+ ?>
+
 
 <html>
 <body>
@@ -45,46 +55,22 @@ $rows = $result->fetchAll();
 			$hobby_list = explode(",",$i["hobby"]);
 			$arrlength = count($hobby_list);
 			echo '興趣: <input type="checkbox" name="hobby[]" value="Basketball"';
-			for($x=0;$x<$arrlength;$x++) {
-				if ($hobby_list[$x] == "Basketball") {
-					echo "checked";
-				}
-			}
+			hobby_checked($hobby_list,$arrlength,"Basketball");
 			echo '>籃球';
 			echo '<input type="checkbox" name="hobby[]" value="Baseball"';
-			for($x=0;$x<$arrlength;$x++) {
-				if ($hobby_list[$x] == "Baseball") {
-					echo "checked";
-				}
-			}
+			hobby_checked($hobby_list,$arrlength,"Baseball");
 			echo '>棒球';
 			echo '<input type="checkbox" name="hobby[]" value="Football"';
-			for($x=0;$x<$arrlength;$x++) {
-				if ($hobby_list[$x] == "Football") {
-					echo "checked";
-				}
-			}
+			hobby_checked($hobby_list,$arrlength,"Football");
 			echo '>足球<br>';
 			echo '<input type="checkbox" name="hobby[]" value="Tennis"';
-			for($x=0;$x<$arrlength;$x++) {
-				if ($hobby_list[$x] == "Tennis") {
-					echo "checked";
-				}
-			}
+			hobby_checked($hobby_list,$arrlength,"Tennis");
 			echo '>網球';
 			echo '<input type="checkbox" name="hobby[]" value="Badminton"';
-			for($x=0;$x<$arrlength;$x++) {
-				if ($hobby_list[$x] == "Badminton") {
-					echo "checked";
-				}
-			}
+			hobby_checked($hobby_list,$arrlength,"Badminton");
 			echo '>羽毛球';
 			echo '<input type="checkbox" name="hobby[]" value="Pingpong"';
-			for($x=0;$x<$arrlength;$x++) {
-				if ($hobby_list[$x] == "Pingpong") {
-					echo "checked";
-				}
-			}
+			hobby_checked($hobby_list,$arrlength,"Pingpong");
 			echo '>乒乓球<br>';
 	      	echo '自我介紹: <textarea name="info" cols="30" rows="5" >'.$i['info'].'</textarea><br>';
 	      }
