@@ -14,6 +14,7 @@ $rows = $result->fetchAll();
     <?php 
     foreach($rows as $i){
       echo "<tr>";
+      //echo "<td>".$i['id']."</td>";
       echo "<td>".$i['name']."</td>";
       echo "<td>".$i['age']."</td>";
       switch ($i['sex']) {
