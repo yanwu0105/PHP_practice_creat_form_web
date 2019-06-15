@@ -40,12 +40,52 @@ $rows = $result->fetchAll();
 	      	echo '<option value="Graduate" ';
 	      	if($i['education']=="Graduate") {echo 'selected';}
 	      	echo '>研究所以上</option></Select><br>';
-	      	echo '興趣: <input type="checkbox" name="hobby[]" value="Basketball">籃球
-	      	<input type="checkbox" name="hobby[]" value="Baseball">棒球
-	      	<input type="checkbox" name="hobby[]" value="Football">足球<br>
-	      	<input type="checkbox" name="hobby[]" value="Tennis">網球
-	      	<input type="checkbox" name="hobby[]" value="Badminton">羽毛球
-	      	<input type="checkbox" name="hobby[]" value="Pingpong">乒乓球<br>';
+
+			$hobby_array = $i["hobby"];
+			$hobby_list = explode(",",$i["hobby"]);
+			$arrlength = count($hobby_list);
+			echo '興趣: <input type="checkbox" name="hobby[]" value="Basketball"';
+			for($x=0;$x<$arrlength;$x++) {
+				if ($hobby_list[$x] == "Basketball") {
+					echo "checked";
+				}
+			}
+			echo '>籃球';
+			echo '<input type="checkbox" name="hobby[]" value="Baseball"';
+			for($x=0;$x<$arrlength;$x++) {
+				if ($hobby_list[$x] == "Baseball") {
+					echo "checked";
+				}
+			}
+			echo '>棒球';
+			echo '<input type="checkbox" name="hobby[]" value="Football"';
+			for($x=0;$x<$arrlength;$x++) {
+				if ($hobby_list[$x] == "Football") {
+					echo "checked";
+				}
+			}
+			echo '>足球<br>';
+			echo '<input type="checkbox" name="hobby[]" value="Tennis"';
+			for($x=0;$x<$arrlength;$x++) {
+				if ($hobby_list[$x] == "Tennis") {
+					echo "checked";
+				}
+			}
+			echo '>網球';
+			echo '<input type="checkbox" name="hobby[]" value="Badminton"';
+			for($x=0;$x<$arrlength;$x++) {
+				if ($hobby_list[$x] == "Badminton") {
+					echo "checked";
+				}
+			}
+			echo '>羽毛球';
+			echo '<input type="checkbox" name="hobby[]" value="Pingpong"';
+			for($x=0;$x<$arrlength;$x++) {
+				if ($hobby_list[$x] == "Pingpong") {
+					echo "checked";
+				}
+			}
+			echo '>乒乓球<br>';
 	      	echo '自我介紹: <textarea name="info" cols="30" rows="5" >'.$i['info'].'</textarea><br>';
 	      }
 	    ?>
