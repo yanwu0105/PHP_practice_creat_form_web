@@ -51,7 +51,6 @@ function hobby_checked($hobby_list,$arrlength,$hobby_info){
 	      	if($i['education']=="Graduate") {echo 'selected';}
 	      	echo '>研究所以上</option></Select><br>';
 
-			$hobby_array = $i["hobby"];
 			$hobby_list = explode(",",$i["hobby"]);
 			$arrlength = count($hobby_list);
 			echo '興趣: <input type="checkbox" name="hobby[]" value="Basketball"';
