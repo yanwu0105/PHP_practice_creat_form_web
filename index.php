@@ -2,9 +2,22 @@
 include "./connect_db.php";
 $sql = "SELECT * FROM info_data";
 $result = $db->query($sql);
-$rows = $result->fetchAll();
-?>
+$rows_all = $result->fetchAll();
+$data_nums = count($rows_all);
 
+$per = 5; //每頁顯示項目數量
+
+$pages = ceil($data_nums/$per); //取得不小於值的下一個整數
+if (!isset($_GET["page"])){ 
+  $page=1; //則在此設定起始頁數
+} else {
+  $page = intval($_GET["page"]); //確認頁數只能夠是數值資料
+  }
+$start = ($page-1)*$per; //每一頁開始的資料序號
+$result = $db->query($sql.' LIMIT '.$start.', '.$per);
+$rows = $result->fetchAll();
+
+?>
 
 <html>
 <body>
@@ -82,6 +95,23 @@ $rows = $result->fetchAll();
     }
     ?>
   </table>
+
+  <?php
+    //分頁頁碼
+    echo '總共 '.$data_nums.' 筆資料';
+    echo '<br />目前在 '.$page.' 頁-共 '.$pages.' 頁';
+    echo "<br /><a href=?page=1>第1頁</a> ";
+    if ($pages >= 3) {
+       echo " 第 ";
+      for( $i=2 ; $i<$pages ; $i++ ) {
+        if ( $page-3 < $i && $i < $page+3 ) {
+            echo "<a href=?page=".$i.">".$i."</a> 頁 ";
+          }
+      }
+     }
+    echo "<a href=?page=".$pages.">第".$pages."頁</a><br /><br />";
+?>
+
 </body>
 </html>
 
