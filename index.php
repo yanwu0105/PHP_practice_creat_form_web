@@ -100,16 +100,16 @@ $rows = $result->fetchAll();
     //分頁頁碼
     echo '總共 '.$data_nums.' 筆資料';
     echo '<br />目前在 '.$page.' 頁-共 '.$pages.' 頁';
-    echo "<br /><a href=?page=1>第1頁</a> ";
+    echo "<br /><a href=?page=1 style='text-decoration:none;'>第1頁</a> ";
     if ($pages >= 3) {
        echo " 第 ";
       for( $i=2 ; $i<$pages ; $i++ ) {
         if ( $page-3 < $i && $i < $page+3 ) {
-            echo "<a href=?page=".$i.">".$i."</a> 頁 ";
+            echo "<a href=?page=".$i." style='text-decoration:none;'> ".$i." </a>";
           }
       }
      }
-    echo "<a href=?page=".$pages.">第".$pages."頁</a><br /><br />";
+    echo " 頁 <a href=?page=".$pages." style='text-decoration:none;'>第".$pages."頁</a><br /><br />";
 ?>
 
 </body>
